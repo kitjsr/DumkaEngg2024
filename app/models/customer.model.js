@@ -2,13 +2,14 @@
 module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
-        cname:String,
-        mobile:String,
+        
         email:String,
-        dob: String,
+        name:String,
+        mobile:String,
+        
         gender: String,
-        caddress:String,
-        cpassword:String,
+        state:String,
+        aadhar:String,
         status: Boolean,
     },
     { timestamps: true }

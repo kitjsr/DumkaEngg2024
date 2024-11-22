@@ -4,20 +4,20 @@ const Customer = db.customers;
 // Create and Save a new Customer
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.cname) {
+  if (!req.body.name) {
     res.status(400).send({ message: "Name can not be empty!" });
     return;
   }
 
   // Create a Customer
   const customer = new Customer({
-    cname: req.body.cname,
-    mobile: req.body.mobile,
+    
     email: req.body.email,
-    dob: req.body.dob,
+    name: req.body.name,
+    mobile: req.body.mobile,
     gender: req.body.gender,
-    password:req.body.passwword,
-    caddress: req.body.caddress,
+    state:req.body.state,
+    aadhar: req.body.aadhar,
     active: req.body.active ? req.body.active : false
   });
 
@@ -37,8 +37,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Customers from the database.
 exports.findAll = (req, res) => {
-  const cname = req.query.cname;
-  var condition = cname ? { cname: { $regex: new RegExp(cname), $options: "i" } } : {};
+  const name = req.query.name;
+  var condition = name ? { name: { $regex: new RegExp(name), $options: "i" } } : {};
 
   Customer.find(condition)
     .then(data => {
